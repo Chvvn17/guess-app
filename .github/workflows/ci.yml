@@ -25,7 +25,7 @@ jobs:
         run: go build -o artifact/guess_app
         # Baut das Go-Projekt und legt das ausführbare Programm "guess_app" im Verzeichnis "artifact" ab
 
-      - name: Show artifact
+      - name: Show artifact (debug)
         run: ls -l artifact       # Listet den Inhalt des Verzeichnisses "artifact" auf, um sicherzustellen, dass die Datei erstellt wurde
 
       - name: Upload artifact
