@@ -22,7 +22,7 @@ jobs:
         run: pwd                  # Zeigt den aktuellen Arbeitsordner (working directory) an
 
       - name: Build
-        run: go build -o artifact/guess_app
+        run: go build -o artifact/guess_app.exe
         # Baut das Go-Projekt und legt das ausführbare Programm "guess_app" im Verzeichnis "artifact" ab
 
       - name: Show artifact (debug)
