@@ -1,0 +1,35 @@
+name: build-and-push-guess-app   # Name des Workflows, erscheint in GitHub Actions
+
+on: [push]                       # Trigger: Workflow wird bei jedem Push ins Repo ausgeführt
+
+jobs:
+  build-and-push:                # Ein Job namens "build-and-push"
+    runs-on: ubuntu-latest       # Läuft in einer Ubuntu-VM (Runner)
+
+    steps:                       # Schritte, die nacheinander ausgeführt werden
+      - name: Checkout source code from git repository
+        uses: actions/checkout@v4 # Holt den aktuellen Quellcode aus dem Git-Repository
+
+      - name: Set up Go
+        uses: actions/setup-go@v5 # Installiert und richtet Go auf dem Runner ein
+        with:
+          go-version: '1.24'      # Nutzt Go-Version 1.24
+
+      - name: Show go version (debug)
+        run: go version           # Gibt die aktuell installierte Go-Version aus (zur Kontrolle)
+
+      - name: Print working directory
+        run: pwd                  # Zeigt den aktuellen Arbeitsordner (working directory) an
+
+      - name: Build
+        run: go build -o artifact/guess_app
+        # Baut das Go-Projekt und legt das ausführbare Programm "guess_app" im Verzeichnis "artifact" ab
+
+      - name: Show artifact
+        run: ls -l artifact       # Listet den Inhalt des Verzeichnisses "artifact" auf, um sicherzustellen, dass die Datei erstellt wurde
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4  # Lädt Dateien/Ordner als Artefakte hoch
+        with:
+          name: my-artifact       # Name des Artefakts (wird in GitHub angezeigt)
+          path: artifact          # Pfad zu den hochzuladenden Dateien (hier: das Build-Output-Verzeichnis)
