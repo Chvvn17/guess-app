@@ -4,7 +4,7 @@ on: [push]                       # Trigger: Workflow wird bei jedem Push ins Rep
 
 jobs:
   build-and-push:                # Ein Job namens "build-and-push"
-    runs-on: ubuntu-latest       # Läuft in einer Ubuntu-VM (Runner)
+    runs-on: windows-latest       # Läuft in einer Windows-VM (Runner)
 
     steps:                       # Schritte, die nacheinander ausgeführt werden
       - name: Checkout source code from git repository
