@@ -46,5 +46,8 @@ func main() {
 		fmt.Println("You haven't guessed it within the number of allowed guesses.")
 	}
 	fmt.Println("The game is now finished. Press Enter to close the application.")
-	reader.ReadString('\n')
+	_, err := reader.ReadString('\n')
+	if err != nil {
+		log.Fatal(err)
+	}
 }
